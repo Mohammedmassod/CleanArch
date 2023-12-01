@@ -1,4 +1,4 @@
-﻿namespace CleanArch.Application.Interfaces
+﻿namespace CleanArch.Domain.IRepositores
 {
     public interface IRepository<T> where T : class
     {

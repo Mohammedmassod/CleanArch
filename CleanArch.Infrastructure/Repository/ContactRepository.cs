@@ -1,6 +1,6 @@
-﻿using CleanArch.Application.Interfaces;
-using CleanArch.Core.Entities;
-using CleanArch.Sql.Queries;
+﻿using CleanArch.Domain.Entities;
+using CleanArch.Domain.IRepositores;
+using CleanArch.Infrastructure.Queries;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System.Data;

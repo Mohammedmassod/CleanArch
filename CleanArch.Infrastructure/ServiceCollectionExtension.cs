@@ -1,4 +1,5 @@
 ﻿using CleanArch.Application.Interfaces;
+using CleanArch.Domain.IRepositores;
 using CleanArch.Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 

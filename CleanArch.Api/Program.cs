@@ -1,9 +1,26 @@
+﻿using CleanArch.Application.IServices;
 using CleanArch.Application.Services;
 using CleanArch.Infrastructure;
 using log4net.Config;
 using Microsoft.OpenApi.Models;
+//using Microsoft.AspNet.OData.Extensions;
+//using Microsoft.OData.Edm;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//ODATA
+
+// إضافة خدمات OData
+/*builder.Services.AddControllers().AddOData(opt => opt.Select().Filter().Expand().OrderBy().SetMaxTop(null).Count());
+
+// إعداد النقاط النهاية لـ OData
+builder.Services.AddOData();
+
+// إعداد الـ DbContext الخاص بك هنا
+builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+*/
+//ODATA
+
 
 builder.Services.AddScoped<IContactService, ContactService>();
 

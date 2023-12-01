@@ -36,7 +36,7 @@ namespace CleanArch.Logging
         #region ===[ ILogger Members ]=============================================================
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Debug level.
+        /// Logs a message object with the log4net.Domain.Level.Debug level.
         /// </summary>
         /// <param name="message"></param>
         public void Debug(object message)
@@ -46,7 +46,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Info level.
+        /// Logs a message object with the log4net.Domain.Level.Info level.
         /// </summary>
         /// <param name="message"></param>
         public void Info(object message)
@@ -56,7 +56,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Info Warning.
+        /// Logs a message object with the log4net.Domain.Level.Info Warning.
         /// </summary>
         /// <param name="message"></param>
         public void Warn(object message)
@@ -66,7 +66,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Error level.
+        /// Logs a message object with the log4net.Domain.Level.Error level.
         /// </summary>
         /// <param name="message"></param>
         public void Error(object message)
@@ -75,7 +75,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Fatal level.
+        /// Logs a message object with the log4net.Domain.Level.Fatal level.
         /// </summary>
         /// <param name="message"></param>
         public void Fatal(object message)
@@ -84,7 +84,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Debug level including the exception.
+        /// Logs a message object with the log4net.Domain.Level.Debug level including the exception.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="exception"></param>
@@ -95,7 +95,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Info level including the exception.
+        /// Logs a message object with the log4net.Domain.Level.Info level including the exception.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="exception"></param>
@@ -106,7 +106,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Warn level including the exception.
+        /// Logs a message object with the log4net.Domain.Level.Warn level including the exception.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="exception"></param>
@@ -117,7 +117,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Error level including the exception.
+        /// Logs a message object with the log4net.Domain.Level.Error level including the exception.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="exception"></param>
@@ -127,7 +127,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Logs a message object with the log4net.Core.Level.Fatal level including the exception.
+        /// Logs a message object with the log4net.Domain.Level.Fatal level including the exception.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="exception"></param>
@@ -137,7 +137,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Log an exception with the log4net.Core.Level.Error level including the stack trace of the System.Exception passed as a parameter.
+        /// Log an exception with the log4net.Domain.Level.Error level including the stack trace of the System.Exception passed as a parameter.
         /// </summary>
         /// <param name="exception"></param>
         public void Error(Exception exception)
@@ -146,7 +146,7 @@ namespace CleanArch.Logging
         }
 
         /// <summary>
-        /// Log an exception with the log4net.Core.Level.Fatal level including the stack trace of the System.Exception passed as a parameter.
+        /// Log an exception with the log4net.Domain.Level.Fatal level including the stack trace of the System.Exception passed as a parameter.
         /// </summary>
         /// <param name="exception"></param>
         public void Fatal(Exception exception)

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace CleanArch.Sql.Queries
+namespace CleanArch.Infrastructure.Queries
 {
     [ExcludeFromCodeCoverage]
 	public static class ContactQueries

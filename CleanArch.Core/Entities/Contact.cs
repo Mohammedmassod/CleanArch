@@ -1,4 +1,4 @@
-﻿namespace CleanArch.Core.Entities
+﻿namespace CleanArch.Domain.Entities
 {
     public class Contact
     {

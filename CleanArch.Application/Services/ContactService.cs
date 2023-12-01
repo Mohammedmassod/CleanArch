@@ -1,9 +1,9 @@
-﻿using CleanArch.Core.Entities;
+﻿using CleanArch.Domain.Entities;
 using CleanArch.Application.Interfaces;
-//using CleanArch.Logging;
 using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using CleanArch.Application.Helpers;
 
 namespace CleanArch.Application.Services
 {
@@ -28,15 +28,12 @@ namespace CleanArch.Application.Services
             }
             catch (SqlException ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-               // Logger.Instance.Error("SQL Exception:", ex);
+                return ApiResponseHelper.HandleError<string>(ex);
+
             }
             catch (Exception ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-               // Logger.Instance.Error("Exception:", ex);
+                return ApiResponseHelper.HandleError<string>(ex);
             }
 
             return apiResponse;
@@ -56,22 +53,17 @@ namespace CleanArch.Application.Services
             {
                 apiResponse.Success = false;
                 apiResponse.Message = ex.Message;
-               // Logger.Instance.Error("SQL Exception:", ex);
             }
             catch (Exception ex)
             {
                 apiResponse.Success = false;
                 apiResponse.Message = ex.Message;
-                //Logger.Instance.Error("Exception:", ex);
             }
 
             return apiResponse;
         }
 
-        // Implement methods defined in IContactService
-        // ...
-
-        // Example method
+       
         public async Task<ApiResponse<List<Contact>>> GetAllContacts()
         {
             var apiResponse = new ApiResponse<List<Contact>>();
@@ -84,15 +76,11 @@ namespace CleanArch.Application.Services
             }
             catch (SqlException ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-               // Logger.Instance.Error("SQL Exception:", ex);
+                return ApiResponseHelper.HandleError<List<Contact>>(ex);
             }
             catch (Exception ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-               // Logger.Instance.Error("Exception:", ex);
+                return ApiResponseHelper.HandleError<List<Contact>>(ex);
             }
 
             return apiResponse;
@@ -111,15 +99,13 @@ namespace CleanArch.Application.Services
             }
             catch (SqlException ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-              //  Logger.Instance.Error("SQL Exception:", ex);
+                return ApiResponseHelper.HandleError<Contact>(ex);
+
             }
             catch (Exception ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-               // Logger.Instance.Error("Exception:", ex);
+                return ApiResponseHelper.HandleError<Contact>(ex);
+
             }
 
             return apiResponse;
@@ -137,20 +123,17 @@ namespace CleanArch.Application.Services
             }
             catch (SqlException ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-              //  Logger.Instance.Error("SQL Exception:", ex);
+                return ApiResponseHelper.HandleError<string>(ex);
+
             }
             catch (Exception ex)
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                //Logger.Instance.Error("Exception:", ex);
+                return ApiResponseHelper.HandleError<string>(ex);
+
             }
 
             return apiResponse;
         }
 
-        // Other methods...
     }
 }
