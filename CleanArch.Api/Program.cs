@@ -1,8 +1,11 @@
+using CleanArch.Application.Services;
 using CleanArch.Infrastructure;
 using log4net.Config;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IContactService, ContactService>();
 
 //Configure Log4net.
 XmlConfigurator.Configure(new FileInfo("log4net.config"));

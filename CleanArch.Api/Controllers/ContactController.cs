@@ -1,5 +1,6 @@
 ﻿using CleanArch.Api.Models;
 using CleanArch.Application.Interfaces;
+using CleanArch.Application.Services;
 using CleanArch.Core.Entities;
 using CleanArch.Logging;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +11,8 @@ namespace CleanArch.Api.Controllers
     public class ContactController : BaseApiController
     {
         #region ===[ Private Members ]=============================================================
+        private readonly IContactService _contactService;
 
-        private readonly IUnitOfWork _unitOfWork;
 
         #endregion
 
@@ -20,9 +21,9 @@ namespace CleanArch.Api.Controllers
         /// <summary>
         /// Initialize ContactController by injecting an object type of IUnitOfWork
         /// </summary>
-        public ContactController(IUnitOfWork unitOfWork)
+        public ContactController(IContactService contactService)
         {
-            this._unitOfWork = unitOfWork;
+            _contactService = contactService;
         }
 
         #endregion
@@ -30,139 +31,71 @@ namespace CleanArch.Api.Controllers
         #region ===[ Public Methods ]==============================================================
 
         [HttpGet]
-        public async Task<ApiResponse<List<Contact>>> GetAll()
+        public async Task<ActionResult> GetAll()
         {
-            var apiResponse = new ApiResponse<List<Contact>>();
-
-            try
-            {
-                var data = await _unitOfWork.Contacts.GetAllAsync();
-                apiResponse.Success = true;
-                apiResponse.Result = data.ToList();
-            }
-            catch (SqlException ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("SQL Exception:", ex);
-            }
-            catch (Exception ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("Exception:", ex);
-            }
-
-            return apiResponse;
+            return Ok(await _contactService.GetAllContacts());
         }
-
         [HttpGet("{id}")]
-        public async Task<ApiResponse<Contact>> GetById(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-
-            var apiResponse = new ApiResponse<Contact>();
-
-            try
+            var result = await _contactService.GetContactById(id);
+            if (result == null)
             {
-                var data = await _unitOfWork.Contacts.GetByIdAsync(id);
-                apiResponse.Success = true;
-                apiResponse.Result = data;
+                return NotFound();
             }
-            catch (SqlException ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("SQL Exception:", ex);
-            }
-            catch (Exception ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("Exception:", ex);
-            }
-
-            return apiResponse;
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<ApiResponse<string>> Add(Contact contact)
+        public async Task<ActionResult> Add(Contact contact)
         {
-            var apiResponse = new ApiResponse<string>();
+            var apiResponse = await _contactService.AddContact(contact);
 
-            try
+            if (apiResponse.Success)
             {
-                var data = await _unitOfWork.Contacts.AddAsync(contact);
-                apiResponse.Success = true;
-                apiResponse.Result = data;
+                return Ok(apiResponse.Result);
             }
-            catch (SqlException ex)
+            else
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("SQL Exception:", ex);
+                return BadRequest(apiResponse.Message);
             }
-            catch (Exception ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("Exception:", ex);
-            }
-
-            return apiResponse;
         }
 
-        [HttpPut]
-        public async Task<ApiResponse<string>> Update(Contact contact)
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(int id, Contact contact)
         {
-            var apiResponse = new ApiResponse<string>();
-
-            try
+            if (id != contact.ContactId)
             {
-                var data = await _unitOfWork.Contacts.UpdateAsync(contact);
-                apiResponse.Success = true;
-                apiResponse.Result = data;
-            }
-            catch (SqlException ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("SQL Exception:", ex);
-            }
-            catch (Exception ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("Exception:", ex);
+                return BadRequest("Invalid contact ID");
             }
 
-            return apiResponse;
+            var apiResponse = await _contactService.UpdateContact(contact);
+
+            if (apiResponse.Success)
+            {
+                return Ok(apiResponse.Result);
+            }
+            else
+            {
+                return BadRequest(apiResponse.Message);
+            }
         }
 
-        [HttpDelete]
-        public async Task<ApiResponse<string>> Delete(int id)
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
         {
-            var apiResponse = new ApiResponse<string>();
+            var apiResponse = await _contactService.DeleteContact(id);
 
-            try
+            if (apiResponse.Success)
             {
-                var data = await _unitOfWork.Contacts.DeleteAsync(id);
-                apiResponse.Success = true;
-                apiResponse.Result = data;
+                return Ok(apiResponse.Result);
             }
-            catch (SqlException ex)
+            else
             {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("SQL Exception:", ex);
+                return BadRequest(apiResponse.Message);
             }
-            catch (Exception ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-                Logger.Instance.Error("Exception:", ex);
-            }
-
-            return apiResponse;
         }
 
         #endregion
