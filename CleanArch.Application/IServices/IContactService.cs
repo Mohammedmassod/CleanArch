@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CleanArch.Application.Services
+namespace CleanArch.Application.IServices
 {
     public interface IContactService
     {

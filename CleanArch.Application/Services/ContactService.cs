@@ -4,6 +4,7 @@ using System;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using CleanArch.Application.Helpers;
+using CleanArch.Application.IServices;
 
 namespace CleanArch.Application.Services
 {

@@ -1,6 +1,5 @@
-﻿using CleanArch.Api.Models;
-using CleanArch.Application.Interfaces;
-using CleanArch.Application.Services;
+﻿using CleanArch.Application.Interfaces;
+using CleanArch.Application.IServices;
 using CleanArch.Domain.Entities;
 using CleanArch.Logging;
 using Microsoft.AspNetCore.Mvc;
