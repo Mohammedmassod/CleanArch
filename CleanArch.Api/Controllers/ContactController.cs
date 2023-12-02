@@ -2,7 +2,6 @@
 using CleanArch.Application.IServices;
 using CleanArch.Domain.Entities;
 using CleanArch.Logging;
-using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 
@@ -29,7 +28,6 @@ namespace CleanArch.Api.Controllers
         #endregion
 
         #region ===[ Public Methods ]==============================================================
-        [EnableQuery()]  // requires using Microsoft.AspNet.OData;
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {

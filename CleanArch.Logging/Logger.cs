@@ -1,5 +1,5 @@
 ﻿using log4net;
-using log4net.Core;
+//using log4net.Core;
 using System.Reflection;
 
 namespace CleanArch.Logging

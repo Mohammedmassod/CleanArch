@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Api", "CleanArch.Api\CleanArch.Api.csproj", "{F2BE9D63-A3F1-4501-BFBC-7877E4D7B293}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Domain", "CleanArch.Core\CleanArch.Domain.csproj", "{263E5B42-6E0E-4929-900A-4208C382D59E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Core", "CleanArch.Core\CleanArch.Core.csproj", "{263E5B42-6E0E-4929-900A-4208C382D59E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Application", "CleanArch.Application\CleanArch.Application.csproj", "{E190E9A8-B3D8-4F00-82A7-E7ADF806A9F8}"
 EndProject

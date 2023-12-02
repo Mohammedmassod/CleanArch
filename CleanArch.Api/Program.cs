@@ -3,21 +3,12 @@ using CleanArch.Application.Services;
 using CleanArch.Infrastructure;
 using log4net.Config;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNet.OData.Extensions;
-using Microsoft.OData.Edm;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//ODATA
-
-//ODATA
-
-
-builder.Services.AddScoped<IContactService, ContactService>();
-
 //Configure Log4net.
 XmlConfigurator.Configure(new FileInfo("log4net.config"));
-
+builder.Services.AddScoped<IContactService, ContactService>();
 //Injecting services.
 builder.Services.RegisterServices();
 
@@ -26,9 +17,6 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
-// requires using Microsoft.AspNet.OData.Extensions;
-builder.Services.AddOData();
 
 builder.Services.AddSwaggerGen(c =>
 {
