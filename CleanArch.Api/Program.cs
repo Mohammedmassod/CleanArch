@@ -3,22 +3,13 @@ using CleanArch.Application.Services;
 using CleanArch.Infrastructure;
 using log4net.Config;
 using Microsoft.OpenApi.Models;
-//using Microsoft.AspNet.OData.Extensions;
-//using Microsoft.OData.Edm;
+using Microsoft.AspNet.OData.Extensions;
+using Microsoft.OData.Edm;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //ODATA
 
-// إضافة خدمات OData
-/*builder.Services.AddControllers().AddOData(opt => opt.Select().Filter().Expand().OrderBy().SetMaxTop(null).Count());
-
-// إعداد النقاط النهاية لـ OData
-builder.Services.AddOData();
-
-// إعداد الـ DbContext الخاص بك هنا
-builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-*/
 //ODATA
 
 
@@ -35,6 +26,9 @@ builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+// requires using Microsoft.AspNet.OData.Extensions;
+builder.Services.AddOData();
 
 builder.Services.AddSwaggerGen(c =>
 {
