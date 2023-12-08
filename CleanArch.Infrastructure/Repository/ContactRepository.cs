@@ -1,4 +1,4 @@
-﻿/*using CleanArch.Domain.Entities;
+﻿using CleanArch.Domain.Entities;
 using CleanArch.Domain.IRepositores;
 using CleanArch.Infrastructure.Queries;
 using Dapper;
@@ -37,7 +37,7 @@ namespace CleanArch.Infrastructure.Repository
             }
         }
 
-        public async Task<Contact> GetByIdAsync(long id)
+        public async Task<Contact> GetByIdAsync(int id)
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
             {
@@ -67,7 +67,7 @@ namespace CleanArch.Infrastructure.Repository
             }
         }
 
-        public async Task<string> DeleteAsync(long id)
+        public async Task<string> DeleteAsync(int id)
         {
             using (IDbConnection connection = new SqlConnection(configuration.GetConnectionString("DBConnection")))
             {
@@ -80,4 +80,3 @@ namespace CleanArch.Infrastructure.Repository
         #endregion
     }
 }
-*/

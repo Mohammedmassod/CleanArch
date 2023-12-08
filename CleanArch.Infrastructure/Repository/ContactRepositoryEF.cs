@@ -1,4 +1,4 @@
-﻿using CleanArch.Domain.Entities;
+﻿/*using CleanArch.Domain.Entities;
 using CleanArch.Domain.IRepositores;
 using CleanArch.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -22,10 +22,10 @@ namespace CleanArch.Infrastructure.Repository
             return await dbContext.Contact.ToListAsync();
         }
 
-        /* public async Task<Contact> GetByIdAsync(long id)
+        *//* public async Task<Contact> GetByIdAsync(long id)
          {
              return await dbContext.Contact.FindAsync(id);
-         }*/
+         }*//*
         public async Task<Contact> GetByIdAsync(int id)
         {
             return await dbContext.Contact.FindAsync(id);
@@ -59,3 +59,4 @@ namespace CleanArch.Infrastructure.Repository
         }
     }
 }
+*/
