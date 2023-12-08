@@ -3,9 +3,26 @@ using CleanArch.Application.Services;
 using CleanArch.Infrastructure;
 using log4net.Config;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.OData;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OData.ModelBuilder;
+using CleanArch.Domain.Entities;
+using Microsoft.OData.Edm;
 
 var builder = WebApplication.CreateBuilder(args);
 
+/*var modelBuilder = new ODataConventionModelBuilder();
+modelBuilder.EntitySet<Contact>("Contacts");*/
+builder.Services.AddControllers()
+.AddOData(options =>
+    options.Select().Filter().Count().OrderBy().Expand().SetMaxTop(100)
+    .AddRouteComponents("odata", GetEdmModel()));
+
+builder.Services.AddDbContext<CleanArch.Infrastructure.Data.AppDbContext>(
+    options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection"));
+    });
 //Configure Log4net.
 XmlConfigurator.Configure(new FileInfo("log4net.config"));
 builder.Services.AddScoped<IContactService, ContactService>();
@@ -62,3 +79,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+static IEdmModel GetEdmModel()
+{
+    ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();
+    modelBuilder.EntitySet<Contact>("ContactOData");
+    return modelBuilder.GetEdmModel();
+}

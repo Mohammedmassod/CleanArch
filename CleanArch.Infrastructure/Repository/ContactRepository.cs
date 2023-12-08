@@ -1,4 +1,4 @@
-﻿using CleanArch.Domain.Entities;
+﻿/*using CleanArch.Domain.Entities;
 using CleanArch.Domain.IRepositores;
 using CleanArch.Infrastructure.Queries;
 using Dapper;
@@ -80,3 +80,4 @@ namespace CleanArch.Infrastructure.Repository
         #endregion
     }
 }
+*/
