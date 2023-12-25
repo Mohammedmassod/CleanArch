@@ -7,16 +7,20 @@ using CleanArch.Domain.Common;
 using CleanArch.Domain.Enums;
 namespace CleanArch.Domain.Entities
 {
-    public class Permission : CleanArch.Domain.Common.ValueObject
+    public class Permission : BaseDomainEntity
     {
-        public string Name { get; }
+        public string Name { get; set; }
+        public string Description { get;  set; }
 
         public PermissionLevel Level { get; }
 
-        public Permission(string name, PermissionLevel level)
+
+        public Permission(string name, string description, PermissionLevel level)
         {
             Name = name;
             Level = level;
+            Description = description;
+
         }
     }
 }

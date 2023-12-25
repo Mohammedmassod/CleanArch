@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArch.Domain.Enums
+namespace CleanArch.Test.Domain
 {
-    public enum UserStatus
+    internal class UserTests
     {
-        Active,
-        Inactive
     }
 }

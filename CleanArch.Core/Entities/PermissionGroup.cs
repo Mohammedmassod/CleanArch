@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Domain.Entities
 {
-    public class PermissionGroup : Entity
+    public class PermissionGroup : BaseDomainEntity
     {
         public string Name { get; set; }
 

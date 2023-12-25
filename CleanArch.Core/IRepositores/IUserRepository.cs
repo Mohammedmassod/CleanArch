@@ -11,7 +11,7 @@ namespace CleanArch.Domain.IRepositores
     public interface IUserRepository: IRepository<User>
     {
         Task ChangePasswordAsync(int userId, string newPassword);
-        Task ChangeUserStatusAsync(int userId, UserStatus newStatus);
+        Task ChangeUserStatusAsync(int userId, Status newStatus);
 
     }
 }

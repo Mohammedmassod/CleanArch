@@ -31,12 +31,12 @@ namespace CleanArch.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            return Ok(await _contactService.GetAllContacts());
+            return Ok(await _contactService.GetAll());
         }
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById(int id)
         {
-            var result = await _contactService.GetContactById(id);
+            var result = await _contactService.GetById(id);
             if (result == null)
             {
                 return NotFound();
@@ -47,7 +47,7 @@ namespace CleanArch.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(Contact contact)
         {
-            var apiResponse = await _contactService.AddContact(contact);
+            var apiResponse = await _contactService.Add(contact);
 
             if (apiResponse.Success)
             {
@@ -68,7 +68,7 @@ namespace CleanArch.Api.Controllers
                 return BadRequest("Invalid contact ID");
             }
 
-            var apiResponse = await _contactService.UpdateContact(contact);
+            var apiResponse = await _contactService.Update(contact);
 
             if (apiResponse.Success)
             {
@@ -84,7 +84,7 @@ namespace CleanArch.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var apiResponse = await _contactService.DeleteContact(id);
+            var apiResponse = await _contactService.Delete(id);
 
             if (apiResponse.Success)
             {

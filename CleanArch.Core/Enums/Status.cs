@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArch.Domain.Common
+namespace CleanArch.Domain.Enums
 {
-    public abstract class Entity
+    public enum Status
     {
-        public int Id { get; set; }
+        Active,
+        Inactive
     }
 }

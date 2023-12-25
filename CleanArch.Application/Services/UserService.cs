@@ -1,36 +1,58 @@
 ﻿using CleanArch.Domain.Entities;
+using CleanArch.Application.Helpers;
 using CleanArch.Application.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using CleanArch.Application.Helpers;
 using CleanArch.Application.IServices;
 
 namespace CleanArch.Application.Services
 {
-    public class ContactService : IContactService
+    public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public ContactService(IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork)
         {
-            this._unitOfWork = unitOfWork;
+            _unitOfWork = unitOfWork;
         }
 
-        public async Task<ApiResponse<string>> Add(Contact contact)
+        public async Task<ApiResponse<string>> Add(User user)
         {
             var apiResponse = new ApiResponse<string>();
 
             try
             {
-                var data = await _unitOfWork.Contacts.AddAsync(contact);
+                await _unitOfWork.Users.AddAsync(user);
                 apiResponse.Success = true;
-                apiResponse.Result = data;
+                apiResponse.Result = "User created successfully.";
             }
             catch (SqlException ex)
             {
                 return ApiResponseHelper.HandleError<string>(ex);
+            }
+            catch (Exception ex)
+            {
+                return ApiResponseHelper.HandleError<string>(ex);
+            }
 
+            return apiResponse;
+        }
+
+        public async Task<ApiResponse<string>> Update(User user)
+        {
+            var apiResponse = new ApiResponse<string>();
+
+            try
+            {
+                await _unitOfWork.Users.UpdateAsync(user);
+                apiResponse.Success = true;
+                apiResponse.Result = "User updated successfully.";
+            }
+            catch (SqlException ex)
+            {
+                return ApiResponseHelper.HandleError<string>(ex);
             }
             catch (Exception ex)
             {
@@ -46,91 +68,61 @@ namespace CleanArch.Application.Services
 
             try
             {
-                var data = await _unitOfWork.Contacts.DeleteAsync(id);
+                await _unitOfWork.Users.DeleteAsync(id);
                 apiResponse.Success = true;
-                apiResponse.Result = data;
-            }
-            catch (SqlException ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                apiResponse.Success = false;
-                apiResponse.Message = ex.Message;
-            }
-
-            return apiResponse;
-        }
-
-       
-        public async Task<ApiResponse<List<Contact>>> GetAll()
-        {
-            var apiResponse = new ApiResponse<List<Contact>>();
-
-            try
-            {
-                var data = await _unitOfWork.Contacts.GetAllAsync();
-                apiResponse.Success = true;
-                apiResponse.Result = data.ToList();
-            }
-            catch (SqlException ex)
-            {
-                return ApiResponseHelper.HandleError<List<Contact>>(ex);
-            }
-            catch (Exception ex)
-            {
-                return ApiResponseHelper.HandleError<List<Contact>>(ex);
-            }
-
-            return apiResponse;
-        }
-
-        public async Task<ApiResponse<Contact>> GetById(int id)
-        {
-
-            var apiResponse = new ApiResponse<Contact>();
-
-            try
-            {
-                var data = await _unitOfWork.Contacts.GetByIdAsync(id);
-                apiResponse.Success = true;
-                apiResponse.Result = data;
-            }
-            catch (SqlException ex)
-            {
-                return ApiResponseHelper.HandleError<Contact>(ex);
-
-            }
-            catch (Exception ex)
-            {
-                return ApiResponseHelper.HandleError<Contact>(ex);
-
-            }
-
-            return apiResponse;
-        }
-
-        public async Task<ApiResponse<string>> Update(Contact contact)
-        {
-            var apiResponse = new ApiResponse<string>();
-
-            try
-            {
-                var data = await _unitOfWork.Contacts.UpdateAsync(contact);
-                apiResponse.Success = true;
-                apiResponse.Result = data;
+                apiResponse.Result = "User deleted successfully.";
             }
             catch (SqlException ex)
             {
                 return ApiResponseHelper.HandleError<string>(ex);
-
             }
             catch (Exception ex)
             {
                 return ApiResponseHelper.HandleError<string>(ex);
+            }
 
+            return apiResponse;
+        }
+
+        public async Task<ApiResponse<User>> GetById(int id)
+        {
+            var apiResponse = new ApiResponse<User>();
+
+            try
+            {
+                var user = await _unitOfWork.Users.GetByIdAsync(id);
+                apiResponse.Success = true;
+                apiResponse.Result = user;
+            }
+            catch (SqlException ex)
+            {
+                return ApiResponseHelper.HandleError<User>(ex);
+            }
+            catch (Exception ex)
+            {
+                return ApiResponseHelper.HandleError<User>(ex);
+            }
+
+            return apiResponse;
+        }
+
+        public async Task<ApiResponse<List<User>>> GetAll()
+        {
+            var apiResponse = new ApiResponse<List<User>>();
+
+            try
+            {
+                var users = await _unitOfWork.Users.GetAllAsync();
+                apiResponse.Success = true;
+                apiResponse.Result = users.ToList(); // هنا استخدم ToList() للتحويل الصريح
+            }
+            catch (SqlException ex)
+            {
+                return ApiResponseHelper.HandleError<List<User>>(ex);
+            }
+            catch (Exception ex)
+            {
+                return ApiResponseHelper.HandleError<List<User>>(ex);
             }
 
             return apiResponse;
