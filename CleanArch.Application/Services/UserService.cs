@@ -18,7 +18,7 @@ namespace CleanArch.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ApiResponse<string>> Add(User user)
+        public async Task<ApiResponse<string>> Create(User user)
         {
             var apiResponse = new ApiResponse<string>();
 
@@ -62,7 +62,7 @@ namespace CleanArch.Application.Services
             return apiResponse;
         }
 
-        public async Task<ApiResponse<string>> Delete(int id)
+        public async Task<ApiResponse<string>> DeleteUser(int id)
         {
             var apiResponse = new ApiResponse<string>();
 
@@ -84,7 +84,7 @@ namespace CleanArch.Application.Services
             return apiResponse;
         }
 
-        public async Task<ApiResponse<User>> GetById(int id)
+        public async Task<ApiResponse<User>> GetUserById(int id)
         {
             var apiResponse = new ApiResponse<User>();
 
@@ -106,7 +106,7 @@ namespace CleanArch.Application.Services
             return apiResponse;
         }
 
-        public async Task<ApiResponse<List<User>>> GetAll()
+        public async Task<ApiResponse<List<User>>> GetAllUsers()
         {
             var apiResponse = new ApiResponse<List<User>>();
 

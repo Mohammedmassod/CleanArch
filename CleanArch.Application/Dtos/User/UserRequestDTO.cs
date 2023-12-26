@@ -1,21 +1,17 @@
 ﻿using System;
-using CleanArch.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace CleanArch.Application.DTOs.User
 {
     public class UserRequestDTO
     {
+        [Required(ErrorMessage = "Please provide a name.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "يرجى إدخال عنوان بريد إلكتروني.")]
-        [EmailAddress(ErrorMessage = "البريد الإلكتروني غير صحيح.")]
+        [Required(ErrorMessage = "Please provide an email.")]
+        [EmailAddress(ErrorMessage = "Invalid email format.")]
         public string Email { get; set; }
 
-        public Status Status { get; set; }
-        public DateTime BirthDate { get; set; }
-
-        // Other properties...
-        // (Address, Phone, Gender, Username, Password, ConfirmPassword, Enabled, IsActive, UserGroup)
+        // Add other necessary fields for creating or updating a user
     }
 }

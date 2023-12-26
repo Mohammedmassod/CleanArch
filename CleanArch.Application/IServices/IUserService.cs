@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Application.IServices
 {
-    public interface IUserService : IGeneralService<User>
+    public interface IUserService
     {
-       /* Task<ApiResponse<string>> Add(User user);
+        Task<ApiResponse<string>> Create(User user);
         Task<ApiResponse<string>> Update(User user);
-        Task<ApiResponse<string>> Delete(int id);
-        Task<ApiResponse<User>> GetById(int id);
-        Task<ApiResponse<List<User>>> GetAll();*/
+        Task<ApiResponse<string>> DeleteUser(int id);
+        Task<ApiResponse<User>> GetUserById(int id);
+        Task<ApiResponse<List<User>>> GetAllUsers();
         // يمكنك إضافة المزيد من الطرق حسب احتياجات التطبيق
     }
-
 }

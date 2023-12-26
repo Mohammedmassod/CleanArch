@@ -28,7 +28,7 @@ namespace CleanArch.Application.Tests.Services
             mockUnitOfWork.Setup(uow => uow.Users.GetByIdAsync(userId)).ReturnsAsync(expectedUser);
 
             // Act
-            var result = await userService.GetById(userId);
+            var result = await userService.GetUserById(userId);
 
             // Assert
             if (userId == 999) // في حالة المستخدم الغير موجود
@@ -89,7 +89,7 @@ namespace CleanArch.Application.Tests.Services
             //mockUnitOfWork.Setup(uow => uow.Users.DeleteAsync(It.IsAny<User>())).ReturnsAsync("Updated successfully"); // Act
             mockUnitOfWork.Setup(uow => uow.Users.DeleteAsync(It.IsAny<int>())).ReturnsAsync("Updated successfully");
 
-            var result = await userService.Delete(userId);
+            var result = await userService.DeleteUser(userId);
 
             // Assert
             Assert.True(result.Success);
@@ -113,7 +113,7 @@ namespace CleanArch.Application.Tests.Services
             mockUnitOfWork.Setup(uow => uow.Users.GetAllAsync()).ReturnsAsync(users);
 
             // Act
-            var result = await userService.GetAll();
+            var result = await userService.GetAllUsers();
 
             // Assert
             Assert.True(result.Success);
