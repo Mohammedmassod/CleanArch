@@ -1,13 +1,13 @@
-﻿using CleanArch.Domain.IRepositores;
+﻿using CleanArch.Application.IRepositores;
 
 namespace CleanArch.Application.Interfaces
 {
     public interface IUnitOfWork
     {
-        IContactRepository Contacts { get; }
         IUserRepository Users { get; }
         IPermissionRepository Permissions { get; }
-
+        IGroupRepository Groups { get; }
+        IPermissionGroupRepository PermissinsGroup { get; }
 
 
     }

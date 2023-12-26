@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Logging", "CleanArch.Logging\CleanArch.Logging.csproj", "{C780A50E-5DBE-4588-9BB0-F5CD5BAA5470}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Test", "CleanArch.Test\CleanArch.Test.csproj", "{1FFDA374-6C96-4384-A184-240F93598E34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Test", "CleanArch.Test\CleanArch.Test.csproj", "{1FFDA374-6C96-4384-A184-240F93598E34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

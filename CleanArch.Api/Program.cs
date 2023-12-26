@@ -25,7 +25,6 @@ builder.Services.AddDbContext<CleanArch.Infrastructure.Data.AppDbContext>(
     });
 //Configure Log4net.
 XmlConfigurator.Configure(new FileInfo("log4net.config"));
-builder.Services.AddScoped<IContactService, ContactService>();
 //Injecting services.
 builder.Services.RegisterServices();
 
@@ -82,6 +81,5 @@ app.Run();
 static IEdmModel GetEdmModel()
 {
     ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();
-    modelBuilder.EntitySet<Contact>("ContactOData");
     return modelBuilder.GetEdmModel();
 }

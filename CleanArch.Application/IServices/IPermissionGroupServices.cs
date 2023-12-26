@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArch.Domain.IRepositores
+namespace CleanArch.Application.IServices
 {
-    public interface IPermissionRepository: IRepository<Permission>
+    public interface IPermissionGroupServices : IGeneralService<PermissionGroup>
     {
     }
 }

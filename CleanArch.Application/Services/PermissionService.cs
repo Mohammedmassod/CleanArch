@@ -1,7 +1,7 @@
 ﻿using CleanArch.Application.Helpers;
 using CleanArch.Application.IServices;
 using CleanArch.Domain.Entities;
-using CleanArch.Domain.IRepositores;
+using CleanArch.Application.IRepositores;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

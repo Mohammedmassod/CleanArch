@@ -14,4 +14,5 @@ namespace CleanArch.Application.IServices
         Task<ApiResponse<List<User>>> GetAll();*/
         // يمكنك إضافة المزيد من الطرق حسب احتياجات التطبيق
     }
+
 }

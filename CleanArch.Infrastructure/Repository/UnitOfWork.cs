@@ -1,22 +1,27 @@
 ﻿using CleanArch.Application.Interfaces;
 using CleanArch.Domain.Entities;
-using CleanArch.Domain.IRepositores;
+using CleanArch.Application.IRepositores;
 
 namespace CleanArch.Infrastructure.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
 
-        public UnitOfWork(IContactRepository contactRepository, IUserRepository userRepository,IPermissionRepository permission)
+        public UnitOfWork( 
+            IUserRepository userRepository,IPermissionRepository permission,IGroupRepository groupRepository ,
+            IPermissionGroupRepository permissionGroup)
         {
-            Contacts = contactRepository;
             Users = userRepository;
             Permissions = permission;
+            Groups = groupRepository;
+            PermissinsGroup = permissionGroup;
         }
 
-        public IContactRepository Contacts { get; set; }
         public IUserRepository Users { get; set; }
         public IPermissionRepository Permissions { get; set; }
+        public IGroupRepository Groups { get; set; }
+
+        public IPermissionGroupRepository PermissinsGroup { get; set; }
 
 
         // تنفيذ الخاصية المطلوبة من IUnitOfWork

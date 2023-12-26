@@ -3,7 +3,7 @@ using CleanArch.Application.IServices;
 using CleanArch.Application.Services;
 using CleanArch.Domain.Entities;
 using CleanArch.Domain.Enums;
-using CleanArch.Domain.IRepositores;
+using CleanArch.Application.IRepositores;
 using Moq;
 using System;
 using System.Collections.Generic;

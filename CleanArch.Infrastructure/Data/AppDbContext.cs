@@ -17,7 +17,6 @@ namespace CleanArch.Infrastructure.Data
             : base(options)
         {
         }
-        public virtual DbSet<Contact> Contact { get; set; }
 
     }
 }

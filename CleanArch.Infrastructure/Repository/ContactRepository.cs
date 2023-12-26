@@ -1,5 +1,5 @@
-﻿using CleanArch.Domain.Entities;
-using CleanArch.Domain.IRepositores;
+﻿/*using CleanArch.Domain.Entities;
+using CleanArch.Application.IRepositores;
 using CleanArch.Infrastructure.Queries;
 using Dapper;
 using Microsoft.Extensions.Configuration;
@@ -80,3 +80,4 @@ namespace CleanArch.Infrastructure.Repository
         #endregion
     }
 }
+*/

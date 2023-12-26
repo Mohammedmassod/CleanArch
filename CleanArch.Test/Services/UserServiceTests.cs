@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanArch.Test.Services
+namespace CleanArch.Application.Tests.Services
 {
     public class UserServiceTests
     {
